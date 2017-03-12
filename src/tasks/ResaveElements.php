@@ -58,7 +58,10 @@ class ResaveElements extends Task
 
         // Let's save ourselves some trouble and just clear all the caches for this element class
         Craft::$app->getTemplateCaches()->deleteCachesByElementType($class);
-
+        
+		\Yii::getLogger()->autoDump=true;
+		\Yii::getLogger()->autoFlush=1;
+        
         // Now find the affected element IDs
         /** @var ElementQuery $query */
         $query = $class::find();
